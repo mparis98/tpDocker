@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  mariadb:
+    image: mariadb
+    environment:
+    - MYSQL_ROOT_PASSWORD=Mat1998%
+    - MYSQL_USER=moi
+    - MYSQL_PASSWORD=password
+    - MYSQL_DATABASE=tpIpssi
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+    - '50000:8080'
+
+  apache_php:
+    build: './'
+    ports:
+      - '30000:80'
+    volumes:
+      - '/Users/matthieuparis/Sites:/var/www/public/'
